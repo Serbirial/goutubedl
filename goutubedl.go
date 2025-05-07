@@ -675,6 +675,12 @@ func (result Result) DownloadWithOptions(
 		)
 	}
 
+	// TODO: work this into a arg like the above
+
+	// Download 4 fragments at a time concurrently (single fragment = too slow)
+	cmd.Args = append(cmd.Args,
+		"--concurrent-fragments", "4")
+
 	cmd.Dir = tempPath
 	var stdoutW io.WriteCloser
 	var stderrW io.WriteCloser
