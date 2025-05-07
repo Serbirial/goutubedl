@@ -678,6 +678,7 @@ func (result Result) DownloadWithOptions(
 	// TODO: work this into a arg like the above
 
 	// Download 4 fragments at a time concurrently (single fragment = too slow)
+	fmt.Println("[EDIT] Downloading in fragments of 4")
 	cmd.Args = append(cmd.Args,
 		"--concurrent-fragments", "4")
 
