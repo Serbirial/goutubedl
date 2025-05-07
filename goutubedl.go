@@ -681,6 +681,8 @@ func (result Result) DownloadWithOptions(
 	fmt.Println("[EDIT] Downloading in fragments of 4")
 	cmd.Args = append(cmd.Args,
 		"--concurrent-fragments", "4")
+	cmd.Args = append(cmd.Args,
+		"-N", "8")
 
 	cmd.Dir = tempPath
 	var stdoutW io.WriteCloser
