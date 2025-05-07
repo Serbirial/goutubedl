@@ -1,4 +1,4 @@
-module github.com/wader/goutubedl
+module github.com/serbirial/goutubedl
 
 go 1.12
 
