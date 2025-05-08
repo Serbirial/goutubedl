@@ -599,7 +599,7 @@ func (result Result) DownloadWithOptions(
 		// use .netrc authentication data
 		"--netrc",
 		// Save archive of downloads
-		"--download-archive", path+"history.txt",
+		"--download-archive", path+"/history.txt",
 		// write to stdout
 		"--output", "-",
 	)
