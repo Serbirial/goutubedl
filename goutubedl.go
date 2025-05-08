@@ -684,7 +684,7 @@ func (result Result) DownloadWithOptions(
 	cmd.Args = append(cmd.Args,
 		"-N", "4")
 
-	cmd.Args = append(cmd.Args, "--throttled-rate 100K")
+	cmd.Args = append(cmd.Args, "--throttled-rate", "100K")
 
 	cmd.Dir = tempPath
 	var stdoutW io.WriteCloser
