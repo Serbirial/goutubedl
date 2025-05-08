@@ -580,7 +580,10 @@ func (result Result) DownloadWithOptions(
 	dr := &DownloadResult{
 		waitCh: make(chan struct{}),
 	}
-
+	path, err := os.Getwd()
+	if err != nil {
+		panic("Cant get CWD")
+	}
 	cmd := exec.CommandContext(
 		ctx,
 		ProbePath(),
@@ -595,7 +598,8 @@ func (result Result) DownloadWithOptions(
 		"--restrict-filenames",
 		// use .netrc authentication data
 		"--netrc",
-
+		// Save archive of downloads
+		"--download-archive", path+"history.txt",
 		// write to stdout
 		"--output", "-",
 	)
@@ -682,12 +686,6 @@ func (result Result) DownloadWithOptions(
 	fmt.Println("[EDIT] Downloading in fragments of 1")
 	cmd.Args = append(cmd.Args,
 		"--concurrent-fragments", "1")
-
-	path, err := os.Getwd()
-	if err != nil {
-		panic("Cant get CWD")
-	}
-	cmd.Args = append(cmd.Args, "--download-archive", path+"history.txt")
 
 	cmd.Args = append(cmd.Args, "--throttled-rate", "100K")
 
