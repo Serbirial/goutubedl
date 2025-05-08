@@ -595,8 +595,7 @@ func (result Result) DownloadWithOptions(
 		"--restrict-filenames",
 		// use .netrc authentication data
 		"--netrc",
-		//
-		"--download-archive ./downloaded.txt",
+
 		// write to stdout
 		"--output", "-",
 	)
@@ -683,6 +682,8 @@ func (result Result) DownloadWithOptions(
 	fmt.Println("[EDIT] Downloading in fragments of 1")
 	cmd.Args = append(cmd.Args,
 		"--concurrent-fragments", "1")
+
+	cmd.Args = append(cmd.Args, "--download-archive", "./downloaded.txt")
 
 	cmd.Args = append(cmd.Args, "--throttled-rate", "100K")
 
