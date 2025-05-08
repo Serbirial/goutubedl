@@ -683,7 +683,11 @@ func (result Result) DownloadWithOptions(
 	cmd.Args = append(cmd.Args,
 		"--concurrent-fragments", "1")
 
-	cmd.Args = append(cmd.Args, "--download-archive", "./downloaded.txt")
+	path, err := os.Getwd()
+	if err != nil {
+		panic("Cant get CWD")
+	}
+	cmd.Args = append(cmd.Args, "--download-archive", path+"history.txt")
 
 	cmd.Args = append(cmd.Args, "--throttled-rate", "100K")
 
